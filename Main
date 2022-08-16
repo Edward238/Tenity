@@ -131,14 +131,18 @@ Tenity.CreateWindow = function()
 		
 		TabButton.MouseButton1Down:Connect(function()
 			for i,v in pairs(TabHolder:GetChildren()) do
-				v.Visible = false
+				if v:IsA("Frame") then
+					v.Visible = false
+				end
 			end
 			Tab.Visible = true
 			for i,v in pairs(ButtonHolder:GetChildren()) do
-				game:GetService("TweenService"):Create(v.TabIcon, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
-				game:GetService("TweenService"):Create(v.TabName, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(255, 255, 255)}):Play()
-				game:GetService("TweenService"):Create(TabIcon, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {ImageColor3 = color or Color3.fromRGB(43, 99, 255)}):Play()
-				game:GetService("TweenService"):Create(TabName, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {TextColor3 = color or Color3.fromRGB(43, 99, 255)}):Play()	
+				if v:IsA("TextButton") then
+					game:GetService("TweenService"):Create(v.TabIcon, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+					game:GetService("TweenService"):Create(v.TabName, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+					game:GetService("TweenService"):Create(TabIcon, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {ImageColor3 = color or Color3.fromRGB(43, 99, 255)}):Play()
+					game:GetService("TweenService"):Create(TabName, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {TextColor3 = color or Color3.fromRGB(43, 99, 255)}):Play()	
+				end	
 			end
 		end)
 	end
