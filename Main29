@@ -272,13 +272,17 @@ Tenity.CreateWindow = function()
 			SmallFrame.Size = UDim2.new(0, 0, 0, 2)
 			
 			Button.MouseEnter:Connect(function()
-				game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
-				game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 2)}):Play()
+				if expanded == false then
+					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 2)}):Play()
+				end
 			end)
 			
 			Button.MouseLeave:Connect(function()
-				game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
-				game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+				if expanded == false then
+					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
+					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+				end
 			end)
 			
 			Arrow.MouseButton1Down:Connect(function()
