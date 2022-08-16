@@ -92,7 +92,8 @@ Tenity.CreateWindow = function()
 		TabIcon.Position = UDim2.new(0.200000003, 0, 0, 0)
 		TabIcon.Size = UDim2.new(0, 60, 0, 60)
 		TabIcon.Image = "rbxassetid://"..icon
-
+		
+		TabName.Name = "TabName"
 		TabName.Parent = TabButton
 		TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabName.BackgroundTransparency = 1.000
