@@ -181,7 +181,7 @@ Tenity.CreateWindow = function()
 		
 		local TabObjects = {}
 		
-		TabObjects.CreateButton = function(name, descripition, color, callback)
+		TabObjects.CreateButton = function(name, description, color, callback)
 			
 			if name == "" then
 				name = "Button"
@@ -189,10 +189,10 @@ Tenity.CreateWindow = function()
 				name = name
 			end
 			
-			if descripition == "" then
-				descripition = "No description for this button"
+			if description == "" then
+				description = "No description for this button"
 			else
-				descripition = descripition
+				description = descripition
 			end
 			
 			if color == "" then
