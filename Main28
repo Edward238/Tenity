@@ -10,7 +10,7 @@ Tenity.CreateWindow = function()
 	local TabHolder = Instance.new("Frame")
 
 	Tenity.Name = "Tenity"
-	Tenity.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	Tenity.Parent = game.CoreGui
 	Tenity.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 	InvisibleFrame.Name = "InvisibleFrame"
@@ -211,7 +211,7 @@ Tenity.CreateWindow = function()
 			local SmallFrame = Instance.new("Frame")
 
 			Button.Name = "Button"
-			Button.Parent = game.StarterGui.Smooth.InvisibleFrame.Main.TabHolder.Tab.TabMain
+			Button.Parent = TabMain
 			Button.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
 			Button.BorderSizePixel = 0
 			Button.ClipsDescendants = true
