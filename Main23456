@@ -59,23 +59,29 @@ Tenity.CreateWindow = function()
 	TabHolder.Position = UDim2.new(0.25999999, 0, 0, 0)
 	TabHolder.Size = UDim2.new(0, 370, 0, 550)
 	
+	coroutine.resume(coroutine.create(function()
+		while wait(0.1) do
+			ButtonHolder.CanvasSize = UDim2.new(0, WindowUiList.AbsoluteContentSize.X, 0, WindowUiList.AbsoluteContentSize.Y)
+		end
+	end))
+	
 	local Tabs = {}
 	
 	Tabs.CreateTab = function(name, icon, color)
 		
-		if name == "" or nil then
+		if name == "" then
 			name = "Tab"
 		else
 			name = name
 		end
 		
-		if icon == "" or nil then
+		if icon == "" then
 			icon = "rbxassetid://7072706318"
 		else
 			icon = "rbxassetid://"..icon
 		end
 		
-		if color == "" or nil then
+		if color == "" then
 			color = Color3.fromRGB(43, 255, 255)
 		else
 			color = color
@@ -166,25 +172,23 @@ Tenity.CreateWindow = function()
 			end
 		end)
 		
-		ButtonHolder.CanvasSize = UDim2.new(0, WindowUiList.AbsoluteContentSize.X, 0, WindowUiList.AbsoluteContentSize.Y)
-		
 		local TabObjects = {}
 		
 		TabObjects.CreateButton = function(name, descripition, color, callback)
 			
-			if name == "" or nil then
+			if name == "" then
 				name = "Button"
 			else
 				name = name
 			end
 			
-			if descripition == "" or nil then
+			if descripition == "" then
 				descripition = "No description for this button"
 			else
 				descripition = descripition
 			end
 			
-			if color == "" or nil then
+			if color == "" then
 				color = Color3.fromRGB(43, 255, 255)
 			else
 				color = color
