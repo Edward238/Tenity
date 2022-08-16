@@ -137,6 +137,7 @@ Tenity.CreateWindow = function()
 		Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Tab.BackgroundTransparency = 1.000
 		Tab.BorderSizePixel = 0
+		Tab.Visible = false
 		Tab.Size = UDim2.new(0, 370, 0, 550)
 
 		TabMain.Name = "TabMain"
