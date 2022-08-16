@@ -137,7 +137,6 @@ Tenity.CreateWindow = function()
 		Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Tab.BackgroundTransparency = 1.000
 		Tab.BorderSizePixel = 0
-		Tab.Visible = false
 		Tab.Size = UDim2.new(0, 370, 0, 550)
 
 		TabMain.Name = "TabMain"
@@ -173,6 +172,12 @@ Tenity.CreateWindow = function()
 			end
 		end)
 		
+		coroutine.resume(coroutine.create(function()
+			while wait(0.1) do
+				TabMain.CanvasSize = UDim2.new(0, TabUiList.AbsoluteContentSize.X, 0, TabUiList.AbsoluteContentSize.Y)
+			end
+		end))
+		
 		local TabObjects = {}
 		
 		TabObjects.CreateButton = function(name, descripition, color, callback)
@@ -202,6 +207,7 @@ Tenity.CreateWindow = function()
 			local Title = Instance.new("TextLabel")
 			local Arrow = Instance.new("ImageButton")
 			local Description = Instance.new("TextLabel")
+			local SmallFrame = Instance.new("Frame")
 
 			Button.Name = "Button"
 			Button.Parent = TabMain
@@ -256,6 +262,20 @@ Tenity.CreateWindow = function()
 			Description.TextSize = 14.000
 			Description.TextWrapped = true
 			
+			SmallFrame.Parent = Button
+			SmallFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			SmallFrame.BorderSizePixel = 0
+			SmallFrame.Position = UDim2.new(0.0229885057, 0, 0.850000024, 0)
+			SmallFrame.Size = UDim2.new(0, 0, 0, 2)
+			
+			Button.MouseEnter:Connect(function()
+				game:GetService('TweenService'):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 100,0, 2)}):Play()
+			end)
+
+			Button.MouseLeave:Connect(function()
+				game:GetService('TweenService'):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
+			end)
+			
 			Arrow.MouseButton1Down:Connect(function()
 				if expanded == false and debounce == false then
 					expanded = true
@@ -279,6 +299,10 @@ Tenity.CreateWindow = function()
 					wait(0.4)
 					debounce = false
 				end
+			end)
+			
+			Button.MouseButton1Down:Connect(function()
+				pcall(callback)
 			end)
 		end
 		
