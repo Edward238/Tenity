@@ -58,35 +58,35 @@ Tenity.CreateWindow = function()
 	TabHolder.BorderSizePixel = 0
 	TabHolder.Position = UDim2.new(0.25999999, 0, 0, 0)
 	TabHolder.Size = UDim2.new(0, 370, 0, 550)
-	
+
 	coroutine.resume(coroutine.create(function()
 		while wait(0.1) do
 			ButtonHolder.CanvasSize = UDim2.new(0, WindowUiList.AbsoluteContentSize.X, 0, WindowUiList.AbsoluteContentSize.Y)
 		end
 	end))
-	
+
 	local Tabs = {}
-	
+
 	Tabs.CreateTab = function(name, icon, color)
-		
+
 		if name == "" then
 			name = "Tab"
 		else
 			name = name
 		end
-		
+
 		if icon == "" then
 			icon = "rbxassetid://7072706318"
 		else
 			icon = "rbxassetid://"..icon
 		end
-		
+
 		if color == "" then
 			color = Color3.fromRGB(43, 255, 255)
 		else
 			color = color
 		end
-		
+
 		local TabButton = Instance.new("TextButton")
 		local TabIcon = Instance.new("ImageLabel")
 		local TabName = Instance.new("TextLabel")
@@ -117,7 +117,7 @@ Tenity.CreateWindow = function()
 		TabIcon.Position = UDim2.new(0.200000003, 0, 0, 0)
 		TabIcon.Size = UDim2.new(0, 60, 0, 60)
 		TabIcon.Image = icon
-		
+
 		TabName.Name = "TabName"
 		TabName.Parent = TabButton
 		TabName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -131,7 +131,7 @@ Tenity.CreateWindow = function()
 		TabName.TextScaled = true
 		TabName.TextSize = 14.000
 		TabName.TextWrapped = true
-		
+
 		Tab.Name = "Tab"
 		Tab.Parent = TabHolder
 		Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -155,7 +155,7 @@ Tenity.CreateWindow = function()
 		TabUiList.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		TabUiList.SortOrder = Enum.SortOrder.LayoutOrder
 		TabUiList.Padding = UDim.new(0.0199999996, 0)
-		
+
 		TabButton.MouseButton1Down:Connect(function()
 			for i,v in pairs(TabHolder:GetChildren()) do
 				if v.Name == "Tab" then
@@ -172,38 +172,38 @@ Tenity.CreateWindow = function()
 				end	
 			end
 		end)
-		
+
 		coroutine.resume(coroutine.create(function()
 			while wait(0.1) do
 				TabMain.CanvasSize = UDim2.new(0, TabUiList.AbsoluteContentSize.X, 0, TabUiList.AbsoluteContentSize.Y)
 			end
 		end))
-		
+
 		local TabObjects = {}
-		
+
 		TabObjects.CreateButton = function(name, description, color, callback)
-			
+
 			if name == "" then
 				name = "Button"
 			else
 				name = name
 			end
-			
+
 			if description == "" then
 				description = "No description for this button"
 			else
-				description = descripition
+				description = description
 			end
-			
+
 			if color == "" then
 				color = Color3.fromRGB(43, 255, 255)
 			else
 				color = color
 			end
-			
+
 			local expanded = false
 			local debounce = false
-			
+
 			local Button = Instance.new("TextButton")
 			local Title = Instance.new("TextLabel")
 			local Arrow = Instance.new("ImageButton")
@@ -270,21 +270,21 @@ Tenity.CreateWindow = function()
 			SmallFrame.BorderSizePixel = 0
 			SmallFrame.Position = UDim2.new(0.5, 0, 1, 0)
 			SmallFrame.Size = UDim2.new(0, 0, 0, 2)
-			
+
 			Button.MouseEnter:Connect(function()
 				if expanded == false then
 					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
 					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 2)}):Play()
 				end
 			end)
-			
+
 			Button.MouseLeave:Connect(function()
 				if expanded == false then
 					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
 					game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
 				end
 			end)
-			
+
 			Arrow.MouseButton1Down:Connect(function()
 				if expanded == false and debounce == false then
 					expanded = true
@@ -311,15 +311,15 @@ Tenity.CreateWindow = function()
 					debounce = false
 				end
 			end)
-			
+
 			Button.MouseButton1Down:Connect(function()
 				pcall(callback)
 			end)
 		end
-		
+
 		return TabObjects;
 	end
-	
+
 	return Tabs;
 end
 
