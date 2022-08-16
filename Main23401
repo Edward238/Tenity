@@ -211,7 +211,7 @@ Tenity.CreateWindow = function()
 			local SmallFrame = Instance.new("Frame")
 
 			Button.Name = "Button"
-			Button.Parent = game.StarterGui.Smooth.InvisibleFrame.Main.TabHolder.Tab.TabMain
+			Button.Parent = TabMain
 			Button.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
 			Button.BorderSizePixel = 0
 			Button.Position = UDim2.new(0.0139664803, 0, 0, 0)
