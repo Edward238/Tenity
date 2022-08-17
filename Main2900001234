@@ -434,29 +434,35 @@ Tenity.CreateWindow = function()
             State.Size = UDim2.new(0, 0, 0, 2)
 
             Toggle.MouseEnter:Connect(function()
-                game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
-                game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 2)}):Play()
-                game:GetService("TweenService"):Create(State, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
-                game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 174,0, 2)}):Play()
+                if expanded == false then
+                    game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+                    game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 2)}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 174,0, 2)}):Play()
+                end
             end)
 
             Toggle.MouseLeave:Connect(function()
-                game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
-                game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
-                game:GetService("TweenService"):Create(State, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
-                game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+                if expanded == false then
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
+                    game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+                    game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
+                end
             end)
 
             Arrow.MouseButton1Down:Connect(function()
                 if expanded == false and debounce == false then
                     expanded = true
                     debounce = true
+                    game:GetService("TweenService"):Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 100)}):Play()
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.023, 0,0.9, 0)}):Play()
-                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 100)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = color}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = 180}):Play()
                     game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
                     game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 2)}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 174,0, 2)}):Play()
                     wait(0.05)
                     game:GetService("TweenService"):Create(Description, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 0}):Play()
                     wait(0.4)
@@ -465,11 +471,13 @@ Tenity.CreateWindow = function()
                     expanded = false
                     debounce = true
                     game:GetService("TweenService"):Create(Description, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
-                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.023, 0,0.89, 0)}):Play()
-                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 48)}):Play()
+                    game:GetService("TweenService"):Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 40)}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.023, 0,0.89, 0)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = 0}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
                     game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 0,0, 2)}):Play()
+                    game:GetService("TweenService"):Create(State, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
                     game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1}):Play()
                     wait(0.45)
                     debounce = false
@@ -490,7 +498,7 @@ Tenity.CreateWindow = function()
                 end
                 if toggleDebounce == false then
                     toggled = not toggled
-                    pcall(callback, Toggled)
+                    pcall(callback, toggled)
                 end
             end)
 
@@ -503,5 +511,4 @@ Tenity.CreateWindow = function()
 end
 
 return Tenity;
-
 
