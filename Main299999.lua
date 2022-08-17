@@ -323,7 +323,7 @@ Tenity.CreateWindow = function()
             end)
         end
 
-        TabObjects.CreateToggle = function(name, description, color, toggleState, callback)
+        TabObjects.CreateToggle = function(name, description, color, callback)
 
             if name == "" then
                 name = "Button"
@@ -493,13 +493,6 @@ Tenity.CreateWindow = function()
                     toggleDebounce = false
                 end
             end)
-
-            if toggleState == true then
-                toggled = true
-                pcall(callback, toggled)
-                game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(52, 255, 52)}):Play()
-            end
-
         end
 
         return TabObjects;
