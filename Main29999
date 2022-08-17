@@ -346,13 +346,7 @@ Tenity.CreateWindow = function()
             local expanded = false
             local debounce = false
             local toggleDebounce = false
-            local toggled
-
-            if toggleState == false or "" then
-                toggled = false
-            elseif toggleState == true then
-                toggled = true
-            end
+            local toggled = false
 
             local Toggle = Instance.new("TextButton")
             local Title = Instance.new("TextLabel")
@@ -431,7 +425,8 @@ Tenity.CreateWindow = function()
             State.Position = UDim2.new(0.023000082, 0, 0.890000045, 0)
             State.Size = UDim2.new(0, 0, 0, 2)
 
-            if toggled == true then
+            if toggleState == true then
+                toggled = true
                 pcall(callback, toggled)
                 State.BackgroundColor3 = Color3.fromRGB(52, 255, 52)
             end
