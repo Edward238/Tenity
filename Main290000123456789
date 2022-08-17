@@ -346,15 +346,13 @@ Tenity.CreateWindow = function()
             local expanded = false
             local debounce = false
             local toggleDebounce = false
-            local toggled = false
+            local toggled
 
-            if toggleState == false then
+            if toggleState == false or "" then
                 toggled = false
             elseif toggleState == true then
                 toggled = true
-            elseif toggleState == "" then
-                toggled = false
-            end 
+            end
 
             local Toggle = Instance.new("TextButton")
             local Title = Instance.new("TextLabel")
@@ -433,6 +431,11 @@ Tenity.CreateWindow = function()
             State.Position = UDim2.new(0.023000082, 0, 0.890000045, 0)
             State.Size = UDim2.new(0, 0, 0, 2)
 
+            if toggled == true then
+                pcall(callback, toggled)
+                State.BackgroundColor3 = Color3.fromRGB(52, 255 52)
+            end
+
             Toggle.MouseEnter:Connect(function()
                 if expanded == false then
                     game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
@@ -486,16 +489,16 @@ Tenity.CreateWindow = function()
 
             Toggle.MouseButton1Down:Connect(function()
                 if toggled == false and toggleDebounce == false then
+                    toggleDebounce = true
                     toggled = true
                     pcall(callback, toggled)
-                    toggleDebounce = true
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(52, 255, 52)}):Play()
                     wait(0.4)
                     toggleDebounce = false
                 elseif toggled == true and toggleDebounce == false then
+                    toggleDebounce = true
                     toggled = false
                     pcall(callback, toggled)
-                    toggleDebounce = true
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(255, 52, 52)}):Play()
                     wait(0.4)
                     toggleDebounce = false
