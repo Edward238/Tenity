@@ -425,12 +425,6 @@ Tenity.CreateWindow = function()
             State.Position = UDim2.new(0.023000082, 0, 0.890000045, 0)
             State.Size = UDim2.new(0, 0, 0, 2)
 
-            if toggleState == true then
-                toggled = true
-                pcall(callback, toggled)
-                State.BackgroundColor3 = Color3.fromRGB(52, 255, 52)
-            end
-
             Toggle.MouseEnter:Connect(function()
                 if expanded == false then
                     game:GetService("TweenService"):Create(SmallFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
@@ -499,6 +493,12 @@ Tenity.CreateWindow = function()
                     toggleDebounce = false
                 end
             end)
+
+            if toggleState == true then
+                toggled = true
+                pcall(callback, toggled)
+                game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(52, 255, 52)}):Play()
+            end
 
         end
 
