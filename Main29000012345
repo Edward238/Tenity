@@ -455,7 +455,7 @@ Tenity.CreateWindow = function()
                 if expanded == false and debounce == false then
                     expanded = true
                     debounce = true
-                    game:GetService("TweenService"):Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 100)}):Play()
+                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 100)}):Play()
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.023, 0,0.9, 0)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = color}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = 180}):Play()
@@ -471,7 +471,7 @@ Tenity.CreateWindow = function()
                     expanded = false
                     debounce = true
                     game:GetService("TweenService"):Create(Description, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
-                    game:GetService("TweenService"):Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 40)}):Play()
+                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 40)}):Play()
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.023, 0,0.89, 0)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = 0}):Play()
