@@ -433,7 +433,7 @@ Tenity.CreateWindow = function()
 
             if toggled == true then
                 pcall(callback, toggled)
-                State.BackgroundColor3 = Color3.fromRGB(52, 255 52)
+                State.BackgroundColor3 = Color3.fromRGB(52, 255, 52)
             end
 
             Toggle.MouseEnter:Connect(function()
