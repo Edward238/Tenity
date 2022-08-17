@@ -401,18 +401,18 @@ Tenity.CreateWindow = function()
             Arrow.Image = "rbxassetid://7072706663"
 
             Description.Name = "Description"
-            Description.Parent = Toggle
+            Description.Parent = Button
             Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             Description.BackgroundTransparency = 1.000
             Description.BorderSizePixel = 0
             Description.Position = UDim2.new(0.0258620698, 0, 0.480000019, 0)
             Description.Size = UDim2.new(0, 330, 0, 36)
-            Description.Visible = false
             Description.Font = Enum.Font.SourceSans
             Description.Text = description
             Description.TextColor3 = Color3.fromRGB(185, 185, 185)
             Description.TextScaled = true
             Description.TextSize = 14.000
+            Description.TextTransparency = 1
             Description.TextWrapped = true
 
             SmallFrame.Name = "SmallFrame"
