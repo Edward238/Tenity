@@ -203,7 +203,6 @@ Tenity.CreateWindow = function()
 
             local expanded = false
             local debounce = false
-            local buttonDebounce = false
 
             local Button = Instance.new("TextButton")
             local Title = Instance.new("TextLabel")
@@ -314,12 +313,7 @@ Tenity.CreateWindow = function()
             end)
 
             Button.MouseButton1Down:Connect(function()
-                if buttonDebounce == false then
-                    buttonDebounce = true
-                    pcall(callback)
-                    wait(0.4)
-                    buttonDebounce = false
-                end
+                pcall(callback)
             end)
         end
 
@@ -345,7 +339,6 @@ Tenity.CreateWindow = function()
 
             local expanded = false
             local debounce = false
-            local toggleDebounce = false
             local toggled = false
 
             local Toggle = Instance.new("TextButton")
@@ -477,21 +470,13 @@ Tenity.CreateWindow = function()
             end)
 
             Toggle.MouseButton1Down:Connect(function()
-                if toggleDebounce == false then 
-                    toggled = not toggled
-                    pcall(callback, toggled)
-                end
-                if toggled == false and toggleDebounce == false then
-                    toggleDebounce = true
+                if toggled == false then
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(52, 255, 52)}):Play()
-                    wait(0.4)
-                    toggleDebounce = false
-                elseif toggled == true and toggleDebounce == false then
-                    toggleDebounce = true
+                elseif toggled == true then
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(255, 52, 52)}):Play()
-                    wait(0.4)
-                    toggleDebounce = false
                 end
+                toggled = not toggled
+                pcall(callback, toggled)
             end)
         end
 
