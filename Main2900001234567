@@ -401,7 +401,7 @@ Tenity.CreateWindow = function()
             Arrow.Image = "rbxassetid://7072706663"
 
             Description.Name = "Description"
-            Description.Parent = Button
+            Description.Parent = Toggle
             Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             Description.BackgroundTransparency = 1.000
             Description.BorderSizePixel = 0
@@ -471,7 +471,7 @@ Tenity.CreateWindow = function()
                     expanded = false
                     debounce = true
                     game:GetService("TweenService"):Create(Description, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextTransparency = 1}):Play()
-                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 40)}):Play()
+                    game:GetService("TweenService"):Create(Toggle, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 348,0, 48)}):Play()
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0.023, 0,0.89, 0)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
                     game:GetService("TweenService"):Create(Arrow, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = 0}):Play()
