@@ -364,7 +364,7 @@ Tenity.CreateWindow = function()
             local State = Instance.new("Frame")
 
             Toggle.Name = "Toggle"
-            Toggle.Parent = game.StarterGui.Smooth.InvisibleFrame.Main.TabHolder.Tab.TabMain
+            Toggle.Parent = TabMain
             Toggle.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
             Toggle.BorderSizePixel = 0
             Toggle.ClipsDescendants = true
