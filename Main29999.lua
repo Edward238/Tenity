@@ -477,17 +477,17 @@ Tenity.CreateWindow = function()
             end)
 
             Toggle.MouseButton1Down:Connect(function()
+                if toggleDebounce == false then 
+                    toggled = not toggled
+                    pcall(callback, toggled)
+                end
                 if toggled == false and toggleDebounce == false then
                     toggleDebounce = true
-                    toggled = true
-                    pcall(callback, toggled)
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(52, 255, 52)}):Play()
                     wait(0.4)
                     toggleDebounce = false
                 elseif toggled == true and toggleDebounce == false then
                     toggleDebounce = true
-                    toggled = false
-                    pcall(callback, toggled)
                     game:GetService("TweenService"):Create(State, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(255, 52, 52)}):Play()
                     wait(0.4)
                     toggleDebounce = false
