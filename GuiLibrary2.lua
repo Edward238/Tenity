@@ -1,7 +1,17 @@
 local Tenity = {}
+local Window
+
+Tenity.Uninject = function()
+    if Window then
+        Window:Destroy()
+    end
+end
 
 Tenity.CreateWindow = function(bind)
     local Tenity = Instance.new("ScreenGui")
+    
+    Window = Tenity
+    
     local InvisibleFrame = Instance.new("Frame")
     local Main = Instance.new("Frame")
     local SideBar = Instance.new("Frame")
