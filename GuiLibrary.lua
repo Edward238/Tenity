@@ -1,6 +1,6 @@
 local Tenity = {}
 
-Tenity.CreateWindow = function()
+Tenity.CreateWindow = function(bind)
     local Tenity = Instance.new("ScreenGui")
     local InvisibleFrame = Instance.new("Frame")
     local Main = Instance.new("Frame")
@@ -58,6 +58,12 @@ Tenity.CreateWindow = function()
     TabHolder.BorderSizePixel = 0
     TabHolder.Position = UDim2.new(0.25999999, 0, 0, 0)
     TabHolder.Size = UDim2.new(0, 370, 0, 550)
+    
+    game:GetService('UserInputService').InputBegan:Connect(function(Key)
+        if Key.UserInputType == Enum.UserInputType.Keyboard and Key.KeyCode == bind then
+            Main.Visible = not Main.Visible
+        end
+    end)
 
     coroutine.resume(coroutine.create(function()
         while wait(0.1) do
