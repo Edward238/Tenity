@@ -79,23 +79,23 @@ do
     Entity.CharacterAdded = function(Player, Character, Check, Refresh)
         if Character then
             task.spawn(function()
-                local HumanoidRootPart = Character:WaitForChild('HumanoidRootPart', 10)
-                local Head = Character:WaitForChild('Head', 10) or HumanoidRootPart and {Position = HumanoidRootPart.Position + Vector3.new(0, 3, 0), Name = 'Head', Size = Vector3.new(1, 1, 1), CFrame = HumanoidRootPart.CFrame + Vector3.new(0, 3, 0), Parent = Character}
-                local Humanoid = Character:WaitForChild('Humanoid', 10) or Character:FindFirstChildWhichIsA('Humanoid')
+                local EntityHumanoidRootPart = Character:WaitForChild('HumanoidRootPart', 10)
+                local EntityHead = Character:WaitForChild('Head', 10) or HumanoidRootPart and {Position = HumanoidRootPart.Position + Vector3.new(0, 3, 0), Name = 'Head', Size = Vector3.new(1, 1, 1), CFrame = HumanoidRootPart.CFrame + Vector3.new(0, 3, 0), Parent = Character}
+                local EntityHumanoid = Character:WaitForChild('Humanoid', 10) or Character:FindFirstChildWhichIsA('Humanoid')
                 if HumanoidRootPart and Humanoid and Head then
                     if Check then
                         Entity.EntityAlive = true
-                        Entity.Character.Head = Head
-                        Entity.Character.Humanoid = Humanoid
-                        Entity.Character.HumanoidRootPart = HumanoidRootPart
+                        Entity.Character.Head = EntityHead
+                        Entity.Character.Humanoid = EntityHumanoid
+                        Entity.Character.HumanoidRootPart = EntityHumanoidRootPart
                     else
                         local NewEnt = {
                             Player = Player;
                             Character = Character;
-                            HumanoidRootPart = HumanoidRootPart;
-                            RootPart = HumanoidRootPart;
-                            Head = Head;
-                            Humanoid = Humanoid;
+                            HumanoidRootPart = EntityHumanoidRootPart;
+                            RootPart = EntityHumanoidRootPart;
+                            Head = EntityHead;
+                            Humanoid = EntityHumanoid;
                             Targetable = Entity.Targetable(Player);
                             Team = Player.Team;
                             Connections = {};
