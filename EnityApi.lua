@@ -118,4 +118,20 @@ function EntityApi:GetHumanoid(string)
 	end
 end
 
+function EntityApi:RespawnPlayer(string)
+    local Player = EntityApi:GetPlayer(string)
+	if Player then
+	    local Character = EntityApi:GetCharacter(Player.Name)
+	    if Character then
+	        if EntityApi:PlayerAlive(Player.Name) then
+	            local Humanoid = EntityApi:GetHumanoid(Player.Name)
+	            if Humanoid then
+	                Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
+	            end
+	            Character:ClearAllChildren()
+    	    end 
+	    end
+	end
+end
+
 return EntityApi
