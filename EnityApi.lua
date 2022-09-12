@@ -13,7 +13,7 @@ function EntityApi:GetPlayer(string)
 	elseif #Players < 1 then
 		return nil
 	end
-edsg
+end
 
 function EntityApi:GetLocalPlayer()
 	local LocalPlayer = game:GetService('Players').LocalPlayer
