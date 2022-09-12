@@ -1,19 +1,19 @@
 local EntityApi = {}
 
-function EntityApi:GetPlayer(String)
-	if not String then return end
-	local Yes = {}
-	for _, Player in ipairs(game.Players:GetPlayers()) do
-		if string.lower(Player.Name):match(string.lower(String)) or string.lower(Player.DisplayName):match(string.lower(String)) then
-			table.insert(Yes, Player)
+function EntityApi:GetPlayer(string)
+	if not string then return end
+	local Players = {}
+	for i,v in ipairs(game:GetService('Players'):GetPlayers()) do
+		if string.lower(v.Name):match(string.lower(string)) or string.lower(v.DisplayName):match(string.lower(string)) then
+			table.insert(Players, v)
 		end
 	end
-	if #Yes > 0 then
-		return Yes[1]
-	elseif #Yes < 1 then
+	if #Players > 0 then
+		return Players[1]
+	elseif #Players < 1 then
 		return nil
 	end
-end
+edsg
 
 function EntityApi:GetLocalPlayer()
 	local LocalPlayer = game:GetService('Players').LocalPlayer
