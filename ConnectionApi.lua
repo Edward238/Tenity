@@ -8,9 +8,7 @@ local Connections = {
 
 function Step:BindToStepped(ConnectionName, Callback)
     if not Connections.Stepped[ConnectionName] then
-        Connections.Stepped[ConnectionName] = game:GetService('RunService').Stepped:Connect(function()
-            pcall(Callback)
-        end)
+        Connections.Stepped[ConnectionName] = game:GetService('RunService').Stepped:Connect(Callback)
     else
         print('[TenityAPI]: Attempted to bind to an already bound connection\n[Connection]: '..ConnectionName..'\n')
     end
@@ -27,9 +25,7 @@ end
 
 function Step:BindToRenderStepped(ConnectionName, Callback)
     if not Connections.RenderStepped[ConnectionName] then
-        Connections.RenderStepped[ConnectionName] = game:GetService('RunService').RenderStepped:Connect(function()
-            pcall(Callback)
-        end)
+        Connections.RenderStepped[ConnectionName] = game:GetService('RunService').RenderStepped:Connect(Callback)
     else
         print('[TenityAPI]: Attempted to bind to an already bound connection\n[Connection]: '..ConnectionName..'\n')
     end
@@ -46,9 +42,7 @@ end
 
 function Step:BindToHeartbeat(ConnectionName, Callback)
     if not Connections.Heartbeat[ConnectionName] then
-        Connections.Heartbeat[ConnectionName] = game:GetService('RunService').Heartbeat:Connect(function()
-            pcall(Callback)
-        end)
+        Connections.Heartbeat[ConnectionName] = game:GetService('RunService').Heartbeat:Connect(Callback)
     else
         print('[TenityAPI]: Attempted to bind to an already bound connection\n[Connection]: '..ConnectionName..'\n')
     end
