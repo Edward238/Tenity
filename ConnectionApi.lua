@@ -6,52 +6,52 @@ local Connections = {
     Heartbeat = {}
 }
 
-function Step:BindToStepped(ConnectionName, Callback)
-    if not Connections.Stepped[ConnectionName] then
-        Connections.Stepped[ConnectionName] = game:GetService('RunService').Stepped:Connect(Callback)
+function Step:BindToStepped(ConnectionId, Callback)
+    if not Connections.Stepped[ConnectionId] then
+        Connections.Stepped[ConnectionId] = game:GetService('RunService').Stepped:Connect(Callback)
     else
         print('[TenityAPI]: Attempted to bind to an already bound connection\n[Connection]: '..ConnectionName..'\n')
     end
 end
 
-function Step:UnbindFromStepped(ConnectionName)
-    if Connections.Stepped[ConnectionName] then
-        Connections.Stepped[ConnectionName]:Disconnect()
-        Connections.Stepped[ConnectionName] = nil
+function Step:UnbindFromStepped(ConnectionId)
+    if Connections.Stepped[ConnectionId] then
+        Connections.Stepped[ConnectionId]:Disconnect()
+        Connections.Stepped[ConnectionId] = nil
     else
         print('[TenityAPI]: Attempted to stop a connection that doesnt exist\n[Connection]: '..ConnectionName..'\n')
     end
 end
 
-function Step:BindToRenderStepped(ConnectionName, Callback)
-    if not Connections.RenderStepped[ConnectionName] then
-        Connections.RenderStepped[ConnectionName] = game:GetService('RunService').RenderStepped:Connect(Callback)
+function Step:BindToRenderStepped(ConnectionId, Callback)
+    if not Connections.RenderStepped[ConnectionId] then
+        Connections.RenderStepped[ConnectionId] = game:GetService('RunService').RenderStepped:Connect(Callback)
     else
         print('[TenityAPI]: Attempted to bind to an already bound connection\n[Connection]: '..ConnectionName..'\n')
     end
 end
 
-function Step:UnbindFromRenderStepped(ConnectionName)
-    if Connections.RenderStepped[ConnectionName] then
-        Connections.RenderStepped[ConnectionName]:Disconnect()
-        Connections.RenderStepped[ConnectionName] = nil
+function Step:UnbindFromRenderStepped(ConnectionId)
+    if Connections.RenderStepped[ConnectionId] then
+        Connections.RenderStepped[ConnectionId]:Disconnect()
+        Connections.RenderStepped[ConnectionId] = nil
     else
         print('[TenityAPI]: Attempted to stop a connection that doesnt exist\n[Connection]: '..ConnectionName..'\n')
     end
 end
 
-function Step:BindToHeartbeat(ConnectionName, Callback)
-    if not Connections.Heartbeat[ConnectionName] then
-        Connections.Heartbeat[ConnectionName] = game:GetService('RunService').Heartbeat:Connect(Callback)
+function Step:BindToHeartbeat(ConnectionId, Callback)
+    if not Connections.Heartbeat[ConnectionId] then
+        Connections.Heartbeat[ConnectionId] = game:GetService('RunService').Heartbeat:Connect(Callback)
     else
         print('[TenityAPI]: Attempted to bind to an already bound connection\n[Connection]: '..ConnectionName..'\n')
     end
 end
 
-function Step:UnbindFromHeartbeat(ConnectionName)
-    if Connections.Heartbeat[ConnectionName] then
-        Connections.Heartbeat[ConnectionName]:Disconnect()
-        Connections.Heartbeat[ConnectionName] = nil
+function Step:UnbindFromHeartbeat(ConnectionId)
+    if Connections.Heartbeat[ConnectionId] then
+        Connections.Heartbeat[ConnectionId]:Disconnect()
+        Connections.Heartbeat[ConnectionId] = nil
     else
         print('[TenityAPI]: Attempted to stop a connection that doesnt exist\n[Connection]: '..ConnectionName..'\n')
     end
