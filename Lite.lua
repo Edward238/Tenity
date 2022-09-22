@@ -17,6 +17,10 @@ repeat
     end
 until suc and type(web) ~= "boolean"
 
+web.OnMessage:Connect(function(msg)
+    print(msg) 
+end)
+
 local function sendrequest(tab)
     local newstr = game:GetService('HttpService'):JSONEncode(tab)
     if suc then
@@ -25,6 +29,6 @@ local function sendrequest(tab)
 end
 
 sendrequest({
-    MessageType = "Inject",
+    msg = "Inject",
     MessageRequest = "InjectToFeather"
 })
