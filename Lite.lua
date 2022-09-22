@@ -31,11 +31,6 @@ local function sendrequest(tab)
     end
 end
 
-wait(1)
-
 sendrequest({
-    msg = "Inject",
-    content = ""
+    msg = "Inject"
 })
-
--- google
