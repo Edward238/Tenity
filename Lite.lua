@@ -29,6 +29,5 @@ local function sendrequest(tab)
 end
 
 sendrequest({
-    msg = "Inject",
-    MessageRequest = "InjectToFeather"
+    msg = "Inject"
 })
