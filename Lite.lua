@@ -19,8 +19,12 @@ until suc and type(web) ~= "boolean"
 
 web.OnMessage:Connect(function(msg)
     msg = game:GetService('HttpService'):JSONDecode(msg)
-    if (msg['command'] == 'reset') then
-        game.Players.LocalPlayer.Character.Humanoid.Health = -9e9 
+    if (msg['msg'] == false) then
+        if (msg['command'] == 'reset') then
+            game.Players.LocalPlayer.Character.Humanoid.Health = -9e9      
+        end
+    elseif (msg['msg'] == true) then
+        print(msg['content'])
     end
 end)
 
@@ -32,5 +36,5 @@ local function sendrequest(tab)
 end
 
 sendrequest({
-    msg = "Inject"
+    msg = "inject"
 })
