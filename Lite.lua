@@ -44,5 +44,6 @@ web.OnMessage:Connect(function(msg)
 end)
 
 sendrequest({
-    msg = "inject"
+    msg = true,
+    content = 'inject'
 })
