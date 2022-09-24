@@ -17,6 +17,17 @@ repeat
     end
 until suc and type(web) ~= "boolean"
 
+local function sendrequest(tab)
+    local newstr = game:GetService('HttpService'):JSONEncode(tab)
+    if suc then
+        web:Send(newstr)
+    end
+end
+
+local Commands = {}
+
+Commands[#Commands + 1] = {Title = 'reset', Description = 'Resets local character'}
+
 web.OnMessage:Connect(function(msg)
     msg = game:GetService('HttpService'):JSONDecode(msg)
     if (msg['msg'] == false) then
@@ -24,16 +35,13 @@ web.OnMessage:Connect(function(msg)
             game.Players.LocalPlayer.Character.Humanoid.Health = -9e9      
         end
     elseif (msg['msg'] == true) then
-        print(msg['content'])
+        if (msg['content'] == 'Injected Feather Lite!') then
+            sendrequest(Commands)
+        else
+            print(msg['content'])
+        end
     end
 end)
-
-local function sendrequest(tab)
-    local newstr = game:GetService('HttpService'):JSONEncode(tab)
-    if suc then
-        web:Send(newstr)
-    end
-end
 
 sendrequest({
     msg = "inject"
