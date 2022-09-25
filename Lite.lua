@@ -17,6 +17,20 @@ repeat
     end
 until suc and type(web) ~= "boolean"
 
+local FeatherApi = {
+    Modules = {},
+    ModuleFunctions = {}
+}
+
+local function ModuleInitiate(name, description, func)
+    local tab = {
+        Title = name,
+        Description = description
+    }
+    table.insert(FeatherApi['Modules'], tab)
+    FeatherApi['ModuleFunctions'][name] = func
+end
+
 local function sendrequest(tab)
     local newstr = game:GetService('HttpService'):JSONEncode(tab)
     if suc then
@@ -24,26 +38,22 @@ local function sendrequest(tab)
     end
 end
 
-local Commands = {}
-
-Commands[#Commands + 1] = {Title = 'reset', Description = 'Resets local character'}
-
 web.OnMessage:Connect(function(msg)
     msg = game:GetService('HttpService'):JSONDecode(msg)
-    if (msg['msg'] == false) then
-        if (msg['command'] == 'reset') then
-            game.Players.LocalPlayer.Character.Humanoid.Health = -9e9      
-        end
-    elseif (msg['msg'] == true) then
-        if (msg['content'] == 'Injected Feather Lite!') then
-            sendrequest(Commands)
-        else
-            print(msg['content'])
+    if (msg['Type'] == 'Message') then
+        print(msg['Content'])
+    elseif (msg['Type'] == 'Button') then
+        if (FeatherApi['ModuleFunctions'][msg['Content']]) then
+            pcall(FeatherApi['ModuleFunctions'][msg['Content']]())
         end
     end
 end)
 
+ModuleInitiate('reset', 'resets character', function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0 
+end)
+
 sendrequest({
-    msg = true,
-    content = 'inject'
+    Type = 'ConnectionRequest',
+    Modules = FeatherApi.Modules
 })
