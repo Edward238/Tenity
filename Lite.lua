@@ -53,6 +53,10 @@ ModuleInitiate('reset', 'resets character', function()
     game.Players.LocalPlayer.Character.Humanoid.Health = 0 
 end)
 
+ModuleInitiate('kill', 'kill player', function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0 
+end)
+
 sendrequest({
     Type = 'ConnectionRequest',
     Modules = FeatherApi['Modules']
