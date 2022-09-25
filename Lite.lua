@@ -17,18 +17,16 @@ repeat
     end
 until suc and type(web) ~= "boolean"
 
-local FeatherApi = {
-    Modules = {},
-    ModuleFunctions = {}
-}
+FeatherModules = {}
+FeatherModuleFunctions = {}
 
 local function ModuleInitiate(name, description, func)
     local tab = {
         Title = name,
         Description = description
     }
-    table.insert(FeatherApi['Modules'], tab)
-    FeatherApi['ModuleFunctions'][name] = func
+    table.insert(FeatherModules, tab)
+    FeatherModuleFunctions[name] = func
 end
 
 local function sendrequest(tab)
@@ -43,8 +41,8 @@ web.OnMessage:Connect(function(msg)
     if (msg['Type'] == 'Message') then
         print(msg['Content'])
     elseif (msg['Type'] == 'Button') then
-        if (FeatherApi['ModuleFunctions'][msg['Content']]) then
-            pcall(FeatherApi['ModuleFunctions'][msg['Content']]())
+        if (FeatherModuleFunctions[msg['Content']] ~= nil) then
+            FeatherModuleFunctions[msg['Content']]()
         end
     end
 end)
@@ -59,5 +57,5 @@ end)
 
 sendrequest({
     Type = 'ConnectionRequest',
-    Modules = FeatherApi['Modules']
+    Modules = FeatherModules
 })
