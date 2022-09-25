@@ -43,8 +43,8 @@ web.OnMessage:Connect(function(msg)
     if (msg['Type'] == 'Message') then
         print(msg['Content'])
     elseif (msg['Type'] == 'Button') then
-        if (FeatherApi['ModuleFunctions']:FindFirstChild(msg['Content'])) then
-            pcall(FeatherApi['ModuleFunctions']:FindFirstChild(msg['Content'])())
+        if (FeatherApi['ModuleFunctions'][msg['Content']]) then
+            pcall(FeatherApi['ModuleFunctions'][msg['Content']]())
         end
     end
 end)
