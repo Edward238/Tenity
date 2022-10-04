@@ -28,7 +28,7 @@ local GuiColour
 
 Magnitude.Window = function(params)
 	local WindowName = params['Name'] or Strings.RandomString(20)
-	local WindowSecondName = params['ScriptName'] or Strings.RandomString(20)
+	local WindowSecondName = params['Version'] or '0.0.1'
 	local WindowColour = params['Colour'] or Color3.fromRGB(0, 200, 90)
 	
 	GuiColour = WindowColour
@@ -131,7 +131,6 @@ Magnitude.Window = function(params)
 	Name.TextScaled = true
 	Name.TextSize = 20.000
 	Name.TextWrapped = true
-	Name.TextXAlignment = Enum.TextXAlignment.Left
 	
 	local tabs = {}
 	
