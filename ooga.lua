@@ -12,7 +12,7 @@ Strings.RandomString = function(length)
 	local randomString = ''
 	
 	for o = 1,length do
-		local nextChar = characters[o]
+		local nextChar = characters[math.random(1,#characters)]
 		randomString = randomString..nextChar
 	end
 	
