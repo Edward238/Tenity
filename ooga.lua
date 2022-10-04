@@ -13,7 +13,7 @@ Magnitude.RandomString = function(length)
 	
 	for o = 1,length do
 		local nextChar = characters[o]
-		randomString = randomString + nextChar
+		randomString = randomString..nextChar
 	end
 	
 	if randomString ~= nil and randomString ~= '' then
