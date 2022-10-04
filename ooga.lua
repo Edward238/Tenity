@@ -212,7 +212,7 @@ Magnitude.Window = function(params)
 						{BackgroundTransparency = 1}
 					):Play()
 					TweenService:Create(
-						v,
+						v.TextLabel,
 						TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 						{TextColor3 = Color3.fromRGB(206, 206, 206)}
 					):Play()
@@ -222,7 +222,7 @@ Magnitude.Window = function(params)
 						{BackgroundTransparency = 0.8}
 					):Play()
 					TweenService:Create(
-						TabButton,
+						TextLabel,
 						TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 						{TextColor3 = Color3.fromRGB(255, 255, 255)}
 					):Play()
