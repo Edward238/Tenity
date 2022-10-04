@@ -24,11 +24,14 @@ Strings.RandomString = function(length)
 end
 
 local TweenService = game:GetService('TweenService')
+local GuiColour
 
 Magnitude.Window = function(params)
 	local WindowName = params['Name'] or Strings.RandomString(20)
 	local WindowSecondName = params['ScriptName'] or Strings.RandomString(20)
 	local WindowColour = params['Colour'] or Color3.fromRGB(0, 200, 90)
+	
+	GuiColour = WindowColour
 
 	local UI = Instance.new('ScreenGui')
 	local Main = Instance.new('Frame')
@@ -136,13 +139,13 @@ Magnitude.Window = function(params)
 		local TabName = params['Name'] or Strings.RandomString(5)
 		local TabIcon = params['Icon'] or 'rbxassetid://7072718840'
 		
-		local Tab = Instance.new("ScrollingFrame")
-		local TabButton = Instance.new("TextButton")
-		local UICorner = Instance.new("UICorner")
-		local TabIcon = Instance.new("ImageLabel")
-		local TextLabel = Instance.new("TextLabel")
+		local Tab = Instance.new('ScrollingFrame')
+		local TabButton = Instance.new('TextButton')
+		local UICorner = Instance.new('UICorner')
+		local TabIcon = Instance.new('ImageLabel')
+		local TextLabel = Instance.new('TextLabel')
 
-		Tab.Name = "Tab"
+		Tab.Name = 'Tab'
 		Tab.Parent = Frames
 		Tab.Active = true
 		Tab.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -154,14 +157,14 @@ Magnitude.Window = function(params)
 		Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
 		Tab.ScrollBarThickness = 0
 
-		TabButton.Name = "Tab"
+		TabButton.Name = 'Tab'
 		TabButton.Parent = ButtonHolder
 		TabButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 		TabButton.BackgroundTransparency = 1.000
 		TabButton.BorderSizePixel = 0
 		TabButton.Size = UDim2.new(0, 80, 0, 80)
 		TabButton.Font = Enum.Font.SourceSans
-		TabButton.Text = ""
+		TabButton.Text = ''
 		TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 		TabButton.TextScaled = true
 		TabButton.TextSize = 14.000
@@ -170,14 +173,14 @@ Magnitude.Window = function(params)
 		UICorner.CornerRadius = UDim.new(0, 5)
 		UICorner.Parent = TabButton
 
-		TabIcon.Name = "TabIcon"
+		TabIcon.Name = 'TabIcon'
 		TabIcon.Parent = TabButton
 		TabIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabIcon.BackgroundTransparency = 1.000
 		TabIcon.BorderSizePixel = 0
 		TabIcon.Position = UDim2.new(0.1875, 0, 0.0874999985, 0)
 		TabIcon.Size = UDim2.new(0, 50, 0, 50)
-		TabIcon.Image = "rbxassetid://7072718840"
+		TabIcon.Image = 'rbxassetid://7072718840'
 		TabIcon.ImageColor3 = Color3.fromRGB(206, 206, 206)
 
 		TextLabel.Parent = TabButton
@@ -232,4 +235,4 @@ Magnitude.Window = function(params)
 	return tabs
 end
 
-return Magnitude;
+return Magnitude
