@@ -1,8 +1,8 @@
 local Magnitude = {}
 
-local TweenService = game:GetService('TweenService')
+local Strings = {}
 
-Magnitude.RandomString = function(length)
+Strings.RandomString = function(length)
 	local characters = {
 		'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 
 		'1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
@@ -23,9 +23,11 @@ Magnitude.RandomString = function(length)
 	end
 end
 
+local TweenService = game:GetService('TweenService')
+
 Magnitude.Window = function(params)
-	local WindowName = params['Name'] or Magnitude.RandomString(20)
-	local WindowSecondName = params['ScriptName'] or Magnitude.RandomString(20)
+	local WindowName = params['Name'] or Strings.RandomString(20)
+	local WindowSecondName = params['ScriptName'] or Strings.RandomString(20)
 	local WindowColour = params['Colour'] or Color3.fromRGB(0, 200, 90)
 
 	local UI = Instance.new('ScreenGui')
@@ -40,7 +42,7 @@ Magnitude.Window = function(params)
 	local Title = Instance.new('TextLabel')
 	local Name = Instance.new('TextLabel')
 
-	UI.Name = Magnitude.RandomString(20)
+	UI.Name = Strings.RandomString(20)
 	UI.Parent = game:GetService('CoreGui')
 	UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -131,7 +133,7 @@ Magnitude.Window = function(params)
 	local tabs = {}
 	
 	tabs.Tab = function(params)
-		local TabName = params['Name'] or Magnitude.RandomString(5)
+		local TabName = params['Name'] or Strings.RandomString(5)
 		local TabIcon = params['Icon'] or 'rbxassetid://7072718840'
 		
 		local Tab = Instance.new("ScrollingFrame")
