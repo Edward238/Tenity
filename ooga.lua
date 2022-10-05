@@ -62,12 +62,13 @@ Magnitude.Window = function(params)
 	UICorner.Parent = Main
 
 	Frames.Name = 'Frames'
-	Frames.Parent = Main
-	Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	Frames.BackgroundTransparency = 1.000
-	Frames.BorderSizePixel = 0
-	Frames.Position = UDim2.new(0.238000005, 0, 0.0233333334, 0)
-	Frames.Size = UDim2.new(0, 373, 0, 284)
+    Frames.Parent = Main
+    Frames.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Frames.BackgroundTransparency = 1.000
+    Frames.BorderSizePixel = 0
+    Frames.ClipsDescendants = true
+    Frames.Position = UDim2.new(0.219999999, 0, 0, 0)
+    Frames.Size = UDim2.new(0, 390, 0, 300)
 
 	Side.Name = 'Side'
 	Side.Parent = Main
@@ -139,6 +140,7 @@ Magnitude.Window = function(params)
 		local TabIcon = params['Icon'] or 'rbxassetid://7072718840'
 		
 		local Tab = Instance.new('ScrollingFrame')
+		local UIListLayout2 = Instance.new('UIListLayout')
 		local TabButton = Instance.new('TextButton')
 		local UICorner = Instance.new('UICorner')
 		local TabIcon = Instance.new('ImageLabel')
@@ -146,15 +148,21 @@ Magnitude.Window = function(params)
 
 		Tab.Name = 'Tab'
 		Tab.Parent = Frames
-		Tab.Active = true
-		Tab.AnchorPoint = Vector2.new(0.5, 0.5)
-		Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		Tab.BackgroundTransparency = 1.000
-		Tab.BorderSizePixel = 0
-		Tab.Position = UDim2.new(0.5, 0, 0.5, 0)
-		Tab.Size = UDim2.new(0, 373, 0, 284)
-		Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
-		Tab.ScrollBarThickness = 0
+        Tab.Active = true
+        Tab.AnchorPoint = Vector2.new(0.5, 0.5)
+        Tab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Tab.BackgroundTransparency = 1.000
+        Tab.BorderSizePixel = 0
+        Tab.ClipsDescendants = false
+        Tab.Position = UDim2.new(0.5, 0, 0.5, 0)
+        Tab.Size = UDim2.new(0, 373, 0, 284)
+        Tab.CanvasSize = UDim2.new(0, 0, 0, 0)
+        Tab.ScrollBarThickness = 0
+
+        UIListLayout2.Parent = Tab
+        UIListLayout2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+        UIListLayout2.SortOrder = Enum.SortOrder.LayoutOrder
+        UIListLayout2.Padding = UDim.new(0.0299999993, 0)
 
 		TabButton.Name = 'Tab'
 		TabButton.Parent = ButtonHolder
@@ -229,6 +237,80 @@ Magnitude.Window = function(params)
 				end
 			end
 		end)
+		
+		local components = {}
+		
+		components.Button = function(params)
+		    local ButtonName = params['Name'] or Strings.RandomString(5)
+		    
+		    local Button = Instance.new('TextButton')
+            local ButtonCorner = Instance.new('UICorner')
+            local LittleFrame = Instance.new('Frame')
+            local FrameCorner = Instance.new('UICorner')
+            local ButtonTitle = Instance.new('TextLabel')
+            
+            Button.Name = 'Button'
+            Button.Parent = game.StarterGui.UI.Main.Frames.Tab
+            Button.BackgroundColor3 = Color3.fromRGB(58, 58, 58)
+            Button.BorderSizePixel = 0
+            Button.ClipsDescendants = true
+            Button.Position = UDim2.new(-0.00938337762, 0, 0, 0)
+            Button.Size = UDim2.new(0, 380, 0, 35)
+            Button.Font = Enum.Font.Gotham
+            Button.Text = ''
+            Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+            Button.TextScaled = true
+            Button.TextSize = 14.000
+            Button.TextWrapped = true
+            
+            ButtonCorner.CornerRadius = UDim.new(0, 5)
+            ButtonCorner.Name = 'ButtonCorner'
+            ButtonCorner.Parent = Button
+            
+            LittleFrame.Name = 'LittleFrame'
+            LittleFrame.Parent = Button
+            LittleFrame.BackgroundColor3 = GuiColour
+            LittleFrame.BorderSizePixel = 0
+            LittleFrame.ClipsDescendants = true
+            LittleFrame.Position = UDim2.new(-0.0236842111, 0, 0, 0)
+            LittleFrame.Size = UDim2.new(0, 4, 0, 35)
+            
+            FrameCorner.CornerRadius = UDim.new(0, 5)
+            FrameCorner.Name = 'FrameCorner'
+            FrameCorner.Parent = LittleFrame
+            
+            ButtonTitle.Name = 'ButtonTitle'
+            ButtonTitle.Parent = Button
+            ButtonTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            ButtonTitle.BackgroundTransparency = 1.000
+            ButtonTitle.BorderSizePixel = 0
+            ButtonTitle.Position = UDim2.new(0.0552631579, 0, 0.0857142881, 0)
+            ButtonTitle.Size = UDim2.new(0, 200, 0, 29)
+            ButtonTitle.Font = Enum.Font.SourceSans
+            ButtonTitle.Text = ButtonName
+            ButtonTitle.TextColor3 = Color3.fromRGB(182, 182, 182)
+            ButtonTitle.TextSize = 20.000
+            ButtonTitle.TextWrapped = true
+            ButtonTitle.TextXAlignment = Enum.TextXAlignment.Left
+            
+            Button.MouseEnter:Connect(function()
+                TweenService:Create(
+					LittleFrame,
+					TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+					{Size = UDim2.new(0, 20, 0, 35)}
+				):Play()
+            end)
+            
+            Button.MouseLeave:Connect(function()
+                TweenService:Create(
+					LittleFrame,
+					TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+					{Size = UDim2.new(0, 4, 0, 35)}
+				):Play()
+            end)
+		end
+		
+		return components
 	end
 	
 	return tabs
