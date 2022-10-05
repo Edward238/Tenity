@@ -204,16 +204,6 @@ Magnitude.Window = function(params)
 				end
 			end
 			Tab.Visible = true
-			for i,v in pairs(Tab:GetChildren()) do
-			    if v:IsA('TextButton') or v:IsA('TextLabel') or v:IsA('ImageButton') or v:IsA('Frame') or v:IsA('ScrollingFrame') then
-			        v.BackgroundTransparency = 1.000
-			        TweenService:Create(
-						v,
-						TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-						{BackgroundTransparency = 1}
-					):Play()
-			    end
-			end
 			for i,v in pairs(ButtonHolder:GetChildren()) do
 				if v:IsA('TextButton') then
 					TweenService:Create(
