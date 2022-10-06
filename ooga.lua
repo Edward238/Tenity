@@ -245,8 +245,7 @@ Magnitude.Window = function(params)
 		    
 		    local Button = Instance.new('TextButton')
             local ButtonCorner = Instance.new('UICorner')
-            local LittleFrame = Instance.new('Frame')
-            local FrameCorner = Instance.new('UICorner')
+            local ButtonStroke = Instance.new('UIStroke')
             local ButtonTitle = Instance.new('TextLabel')
             
             Button.Name = 'Button'
@@ -267,17 +266,12 @@ Magnitude.Window = function(params)
             ButtonCorner.Name = 'ButtonCorner'
             ButtonCorner.Parent = Button
             
-            LittleFrame.Name = 'LittleFrame'
-            LittleFrame.Parent = Button
-            LittleFrame.BackgroundColor3 = GuiColour
-            LittleFrame.BorderSizePixel = 0
-            LittleFrame.ClipsDescendants = true
-            LittleFrame.Position = UDim2.new(-0.0236842111, 0, 0, 0)
-            LittleFrame.Size = UDim2.new(0, 4, 0, 35)
-            
-            FrameCorner.CornerRadius = UDim.new(0, 5)
-            FrameCorner.Name = 'FrameCorner'
-            FrameCorner.Parent = LittleFrame
+            ButtonStroke.Parent = Button
+            ButtonStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            ButtonStroke.Color = GuiColour
+            ButtonStroke.LineJoinMode = Enum.LineJoinMode.Round
+            ButtonStroke.Thickness = 1.5
+            ButtonStroke.Transparency = 1
             
             ButtonTitle.Name = 'ButtonTitle'
             ButtonTitle.Parent = Button
@@ -295,17 +289,17 @@ Magnitude.Window = function(params)
             
             Button.MouseEnter:Connect(function()
                 TweenService:Create(
-					LittleFrame,
+					ButtonStroke,
 					TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-					{Size = UDim2.new(0, 20, 0, 35)}
+					{Transparency = 0}
 				):Play()
             end)
             
             Button.MouseLeave:Connect(function()
                 TweenService:Create(
-					LittleFrame,
+					ButtonStroke,
 					TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-					{Size = UDim2.new(0, 4, 0, 35)}
+					{Transparency = 1}
 				):Play()
             end)
 		end
